@@ -1,10 +1,11 @@
+// src/components/forms/email-form.tsx
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useState } from "react";
-import { Send, Sparkles, Loader2, Building } from "lucide-react";
+import { Send, Loader2, Building } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { generateAiSubjectAction, sendEmailAction } from "@/app/actions/email-actions";
+import { sendEmailAction } from "@/app/actions/email-actions"; // Removed generateAiSubjectAction
 
 const emailSchema = z.object({
   to: z.string().email({ message: "Invalid email address." }),
@@ -35,7 +36,7 @@ const HEAD_OFFICE_EMAIL = "headoffice@medicentral.com"; // Example head office e
 export function EmailForm() {
   const { toast } = useToast();
   const [isSending, setIsSending] = useState(false);
-  const [isGeneratingSubject, setIsGeneratingSubject] = useState(false);
+  // Removed isGeneratingSubject state
 
   const form = useForm<EmailFormValues>({
     resolver: zodResolver(emailSchema),
@@ -46,36 +47,7 @@ export function EmailForm() {
     },
   });
 
-  const handleGenerateSubject = async () => {
-    const emailBody = form.getValues("body");
-    if (!emailBody || emailBody.trim().length < 10) {
-      form.setError("body", { type: "manual", message: "Email body must be at least 10 characters for subject generation." });
-      toast({
-        variant: "destructive",
-        title: "Cannot Generate Subject",
-        description: "Email body is too short.",
-      });
-      return;
-    }
-    
-    setIsGeneratingSubject(true);
-    const result = await generateAiSubjectAction(emailBody);
-    setIsGeneratingSubject(false);
-
-    if (result.subject) {
-      form.setValue("subject", result.subject);
-      toast({
-        title: "Subject Generated!",
-        description: "AI has suggested a subject line.",
-      });
-    } else if (result.error) {
-      toast({
-        variant: "destructive",
-        title: "Subject Generation Failed",
-        description: result.error,
-      });
-    }
-  };
+  // Removed handleGenerateSubject function
 
   async function handleSendEmail(recipientType: 'customer' | 'headOffice') {
     const isValid = await form.trigger();
@@ -149,21 +121,7 @@ export function EmailForm() {
                     <FormControl className="flex-grow">
                       <Input placeholder="Email Subject" {...field} />
                     </FormControl>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={handleGenerateSubject}
-                      disabled={isGeneratingSubject}
-                      className="whitespace-nowrap"
-                    >
-                      {isGeneratingSubject ? (
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      ) : (
-                        <Sparkles className="mr-2 h-4 w-4 text-yellow-500" />
-                      )}
-                      AI Subject
-                    </Button>
+                    {/* Removed AI Subject Button */}
                   </div>
                   <FormMessage />
                 </FormItem>
