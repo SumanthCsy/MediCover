@@ -35,12 +35,12 @@ export default function HomePage() {
       <main className="flex-grow">
         <section className="relative h-[calc(100vh-200px)] min-h-[400px] md:min-h-[500px] flex items-center justify-center text-center bg-secondary/20">
           <Image
-            src="https://placehold.co/1200x600.png"
+            src="/medicover.png" // Updated
             alt="Medicover Hospital Building"
             layout="fill"
             objectFit="cover"
             className="opacity-30"
-            data-ai-hint="hospital building modern"
+            priority // Added priority for LCP
           />
           <div className="relative z-10 p-6 rounded-lg max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
@@ -66,37 +66,37 @@ export default function HomePage() {
                 icon={Stethoscope}
                 title="Specialist Consultations"
                 description="Access expert advice from our wide range of medical specialists."
-                imageHint="doctor patient consultation"
+                imageSrc="/consult.jpg" // Updated
               />
               <ServiceCard
                 icon={HeartPulse}
                 title="Advanced Diagnostics"
                 description="State-of-the-art technology for accurate and timely diagnosis."
-                imageHint="medical diagnostic equipment"
+                imageSrc="/diag.jpg" // Updated
               />
               <ServiceCard
                 icon={ShieldCheck}
                 title="Preventive Health Checks"
                 description="Comprehensive health packages to keep you proactive about your wellbeing."
-                imageHint="health checkup medical"
+                imageSrc="/health.jpg" // Updated
               />
                <ServiceCard
                 icon={CalendarDays}
                 title="Book Appointments"
                 description="Easily schedule your visits with our doctors online or via phone."
-                imageHint="calendar appointment schedule"
+                imageSrc="/appoi.jpg" // Updated
               />
                <ServiceCard
                 icon={Building}
                 title="Modern Facilities"
                 description="Experience care in a comfortable and technologically advanced environment."
-                imageHint="hospital interior modern"
+                imageSrc="/fac.jpg" // Updated (assuming fac.jpj was fac.jpg)
               />
                <ServiceCard
                 icon={Phone}
                 title="24/7 Emergency Care"
                 description="Our emergency services are available round the clock for critical situations."
-                imageHint="emergency room hospital"
+                imageSrc="/24.jpg" // Updated
               />
             </div>
           </div>
@@ -135,20 +135,19 @@ interface ServiceCardProps {
   icon: React.ElementType;
   title: string;
   description: string;
-  imageHint: string;
+  imageSrc: string; // Changed from imageHint to imageSrc
 }
 
-function ServiceCard({ icon: Icon, title, description, imageHint }: ServiceCardProps) {
+function ServiceCard({ icon: Icon, title, description, imageSrc }: ServiceCardProps) {
   return (
     <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       <CardHeader className="pb-2">
         <div className="w-full h-40 relative mb-4 rounded-t-md overflow-hidden">
           <Image 
-            src={`https://placehold.co/600x400.png`} 
+            src={imageSrc} // Updated to use imageSrc
             alt={title} 
             layout="fill" 
             objectFit="cover"
-            data-ai-hint={imageHint}
           />
         </div>
         <div className="flex items-center space-x-3">
