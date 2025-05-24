@@ -28,10 +28,12 @@ export default function LoginPage() {
     <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-secondary/30">
       <div className="text-center mb-8">
         <Building className="w-16 h-16 text-primary mx-auto mb-3" />
-        <h1 className="text-3xl font-bold text-foreground">Medicentral Portal</h1>
+        <h1 className="text-4xl font-bold text-primary mb-2">Welcome to Medicover Hospitals</h1>
+        <h2 className="text-2xl font-semibold text-foreground">Medicentral Portal</h2>
         <p className="text-lg text-muted-foreground mt-1">Sign in to access your account</p>
       </div>
       <LoginForm />
     </main>
   );
 }
+
