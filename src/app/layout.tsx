@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'MediCentral Dashboard',
-  description: 'Medicover Hospital Dashboard Panel',
+  title: 'Medicover Hospitals', // Updated title
+  description: 'Medicover Hospitals - Leading Healthcare Provider. Access the Medicentral Portal.', // Updated description
 };
 
 export default function RootLayout({

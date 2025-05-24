@@ -1,8 +1,9 @@
+
 "use client";
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Mails } from 'lucide-react'; // Placeholder for an icon
+import { LayoutDashboard } from 'lucide-react'; // Changed Mails to LayoutDashboard
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -33,7 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const storedAuth = sessionStorage.getItem('isAuthenticated');
     if (storedAuth === 'true') {
       setIsAuthenticated(true);
-      setEmployeeDetails(MOCK_EMPLOYEE_DETAILS); // Load details if authenticated
+      setEmployeeDetails(MOCK_EMPLOYEE_DETAILS); 
     }
     setIsLoading(false);
   }, []);
@@ -41,16 +42,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!isLoading) {
       if (!isAuthenticated && pathname.startsWith('/dashboard')) {
-        router.push('/');
-      } else if (isAuthenticated && pathname === '/') {
+        router.push('/login'); // Redirect to /login for dashboard access
+      } else if (isAuthenticated && pathname === '/login') { // If authenticated and on login page
         router.push('/dashboard');
       }
+      // Allow authenticated users to visit the homepage ('/')
+      // No specific redirect if authenticated and on '/'
     }
   }, [isAuthenticated, isLoading, pathname, router]);
 
   const login = async (employeeId: string, pass: string) => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 500)); 
     if (employeeId === MOCK_EMPLOYEE_ID && pass === MOCK_PASSWORD) {
       sessionStorage.setItem('isAuthenticated', 'true');
       setIsAuthenticated(true);
@@ -69,15 +72,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     sessionStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
     setEmployeeDetails(null);
-    router.push('/');
+    router.push('/login'); // Redirect to /login on logout
   };
   
-  // Show loading screen only for protected routes while initial auth check
-  if (isLoading && pathname.startsWith('/dashboard')) {
+  // Show loading screen only for protected routes or login page while initial auth check
+  if (isLoading && (pathname.startsWith('/dashboard') || pathname === '/login')) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground">
-        <Mails className="w-16 h-16 mb-4 animate-pulse text-primary" />
-        <p className="text-xl">Loading MediCentral...</p>
+        <LayoutDashboard className="w-16 h-16 mb-4 animate-pulse text-primary" />
+        <p className="text-xl">Loading Medicentral...</p>
       </div>
     );
   }

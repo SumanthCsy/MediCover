@@ -1,9 +1,10 @@
+
 "use client";
 import type { ReactNode } from 'react';
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { LayoutDashboard, PanelLeft } from 'lucide-react'; // Changed Hospital to LayoutDashboard
+import { LayoutDashboard, PanelLeft } from 'lucide-react'; 
 import Link from 'next/link';
 
 import {
@@ -11,7 +12,7 @@ import {
   Sidebar,
   SidebarHeader,
   SidebarContent,
-  // SidebarFooter, // Commented out as per existing code
+  // SidebarFooter, 
   SidebarTrigger,
   SidebarInset,
   useSidebar,
@@ -54,7 +55,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.push('/');
+      router.push('/login'); // Updated to redirect to /login
     }
   }, [isAuthenticated, isLoading, router]);
 
@@ -71,7 +72,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <Sidebar collapsible="icon" className="border-r border-sidebar-border shadow-lg">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2 text-sidebar-foreground hover:text-sidebar-primary transition-colors group-data-[collapsible=icon]:justify-center">
-            <LayoutDashboard className="h-8 w-8 text-sidebar-primary" /> {/* Icon Changed */}
+            <LayoutDashboard className="h-8 w-8 text-sidebar-primary" /> 
             <span className="text-2xl font-bold group-data-[collapsible=icon]:hidden">MediCentral</span>
           </Link>
         </SidebarHeader>
