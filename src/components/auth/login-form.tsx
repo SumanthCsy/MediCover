@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useState } from "react";
-import { Eye, EyeOff, LogIn, Hospital } from "lucide-react";
+import { Eye, EyeOff, LogIn, LayoutDashboard } from "lucide-react"; // Changed Hospital to LayoutDashboard
 
 import { Button } from "@/components/ui/button";
 import {
@@ -56,13 +56,14 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md shadow-xl">
+    <Card className="w-full max-w-md shadow-xl border">
       <CardHeader className="text-center">
-        <div className="flex justify-center mb-4">
-          <Hospital className="w-16 h-16 text-primary" />
-        </div>
-        <CardTitle className="text-3xl font-bold">MediCentral Login</CardTitle>
-        <CardDescription>Enter your credentials to access the dashboard.</CardDescription>
+        {/* Icon is now part of the page.tsx welcome message, can be removed or kept smaller here if desired */}
+        {/* <div className="flex justify-center mb-4">
+          <LayoutDashboard className="w-16 h-16 text-primary" /> 
+        </div> */}
+        <CardTitle className="text-2xl font-bold">Medicentral Portal Access</CardTitle>
+        <CardDescription>Enter your credentials to continue.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -74,7 +75,7 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Employee ID</FormLabel>
                   <FormControl>
-                    <Input placeholder="Employee ID" {...field} />
+                    <Input placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -88,7 +89,7 @@ export function LoginForm() {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Input type={showPassword ? "text" : "password"} placeholder="Password" {...field} />
+                      <Input type={showPassword ? "text" : "password"} placeholder="" {...field} />
                        <Button
                         type="button"
                         variant="ghost"

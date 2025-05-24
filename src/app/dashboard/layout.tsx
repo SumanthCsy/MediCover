@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { Hospital, PanelLeft } from 'lucide-react';
+import { LayoutDashboard, PanelLeft } from 'lucide-react'; // Changed Hospital to LayoutDashboard
 import Link from 'next/link';
 
 import {
@@ -11,7 +11,7 @@ import {
   Sidebar,
   SidebarHeader,
   SidebarContent,
-  SidebarFooter,
+  // SidebarFooter, // Commented out as per existing code
   SidebarTrigger,
   SidebarInset,
   useSidebar,
@@ -23,7 +23,7 @@ import { Button } from '@/components/ui/button';
 
 function DashboardHeader() {
   const { employeeDetails } = useAuth();
-  const { isMobile } = useSidebar(); // Access sidebar context
+  const { isMobile } = useSidebar(); 
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-card px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 py-4">
@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <Sidebar collapsible="icon" className="border-r border-sidebar-border shadow-lg">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2 text-sidebar-foreground hover:text-sidebar-primary transition-colors group-data-[collapsible=icon]:justify-center">
-            <Hospital className="h-8 w-8 text-sidebar-primary" />
+            <LayoutDashboard className="h-8 w-8 text-sidebar-primary" /> {/* Icon Changed */}
             <span className="text-2xl font-bold group-data-[collapsible=icon]:hidden">MediCentral</span>
           </Link>
         </SidebarHeader>

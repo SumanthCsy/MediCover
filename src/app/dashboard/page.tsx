@@ -2,9 +2,7 @@
 
 import { useAuth } from "@/context/auth-context";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserCircle, Briefcase, Info, ShieldCheck } from "lucide-react";
-import Image from "next/image";
+import { UserCircle, Briefcase, Info, ShieldCheck, Mail, CheckCircle2, Clock, BarChart3 } from "lucide-react";
 
 export default function EmployeeProfilePage() {
   const { employeeDetails } = useAuth();
@@ -12,38 +10,16 @@ export default function EmployeeProfilePage() {
   if (!employeeDetails) {
     return (
       <div className="flex items-center justify-center h-full">
+        <div className="animate-pulse rounded-full bg-primary/50 h-10 w-10 mr-3"></div>
         <p>Loading employee details...</p>
       </div>
     );
   }
   
-  const getInitials = (name: string) => {
-    const names = name.split(' ');
-    if (names.length > 1) {
-      return `${names[0][0]}${names[names.length - 1][0]}`.toUpperCase();
-    }
-    return names[0].substring(0, 2).toUpperCase();
-  }
-
   return (
-    <div className="container mx-auto py-8">
-      <Card className="max-w-2xl mx-auto shadow-xl overflow-hidden">
-        <div className="relative h-48 bg-gradient-to-r from-primary to-accent">
-           <Image 
-            src="https://placehold.co/800x300.png" 
-            alt="Hospital banner" 
-            layout="fill" 
-            objectFit="cover" 
-            data-ai-hint="hospital banner"
-          />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-             <Avatar className="h-32 w-32 border-4 border-card shadow-lg">
-                <AvatarImage src={`https://placehold.co/128x128.png?text=${getInitials(employeeDetails.name)}`} alt={employeeDetails.name} data-ai-hint="person avatar"/>
-                <AvatarFallback className="text-4xl">{getInitials(employeeDetails.name)}</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-        <CardHeader className="text-center pt-20 -mt-16 bg-card"> {/* Adjust pt and -mt to position under avatar */}
+    <div className="container mx-auto py-8 space-y-8">
+      <Card className="max-w-2xl mx-auto shadow-lg overflow-hidden">
+        <CardHeader className="text-center py-6 bg-card border-b">
           <CardTitle className="text-3xl font-bold">{employeeDetails.name}</CardTitle>
           <CardDescription className="text-lg text-accent">{employeeDetails.role}</CardDescription>
         </CardHeader>
@@ -64,6 +40,58 @@ export default function EmployeeProfilePage() {
           </div>
         </CardContent>
       </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card className="shadow-md">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Mails Sent</CardTitle>
+            <Mail className="h-5 w-5 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">600</div>
+            <p className="text-xs text-muted-foreground">Cumulative count of all emails</p>
+          </CardContent>
+        </Card>
+        <Card className="shadow-md">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Successful Mails</CardTitle>
+            <CheckCircle2 className="h-5 w-5 text-green-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">580</div>
+            <p className="text-xs text-muted-foreground">+96.7% success rate</p>
+          </CardContent>
+        </Card>
+        <Card className="shadow-md md:col-span-2 lg:col-span-1">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Mail Service Status</CardTitle>
+            <Clock className="h-5 w-5 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-md font-semibold text-primary">Operational Hours</div>
+            <p className="text-sm text-foreground/90">
+              8:00 PM - 3:00 AM
+            </p>
+            <p className="text-xs text-muted-foreground">On all working days.</p>
+          </CardContent>
+        </Card>
+      </div>
+       {/* Placeholder for future charts or more stats */}
+      <Card className="shadow-md">
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <BarChart3 className="h-6 w-6 mr-2 text-primary" />
+            Portal Activity Overview
+          </CardTitle>
+          <CardDescription>Summary of key portal metrics (coming soon).</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="h-40 flex items-center justify-center text-muted-foreground">
+            <p>Chart data and additional statistics will be displayed here.</p>
+          </div>
+        </CardContent>
+      </Card>
+
     </div>
   );
 }
@@ -76,7 +104,7 @@ interface InfoItemProps {
 
 function InfoItem({ icon: Icon, label, value }: InfoItemProps) {
   return (
-    <div className="flex items-start space-x-3 p-3 bg-muted/50 rounded-lg shadow-sm">
+    <div className="flex items-start space-x-3 p-3 bg-card rounded-lg shadow-sm border">
       <Icon className="h-6 w-6 text-primary mt-1" />
       <div>
         <p className="text-sm font-medium text-muted-foreground">{label}</p>
