@@ -72,7 +72,7 @@ export default function HomePage() {
                 icon={HeartPulse}
                 title="Advanced Diagnostics"
                 description="State-of-the-art technology for accurate and timely diagnosis."
-                imageSrc="/diag.jpg" // Updated
+                imageSrc="/diag.jpeg" // Updated
               />
               <ServiceCard
                 icon={ShieldCheck}
@@ -109,7 +109,7 @@ export default function HomePage() {
             <p className="text-lg text-foreground mb-4">
               Have questions or need assistance? Our team is here to help.
             </p>
-            <p className="text-xl font-semibold text-primary">Call Us: +91 XXXX XXX XXX</p>
+            <p className="text-xl font-semibold text-primary">Call Us: +91 040-68334455</p>
             <p className="text-md text-muted-foreground">Visit our Karimnagar branch for in-person assistance.</p>
           </div>
         </section>
