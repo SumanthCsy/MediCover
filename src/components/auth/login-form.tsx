@@ -74,7 +74,7 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Employee ID</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., 20254120" {...field} />
+                    <Input placeholder="Employee ID" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -88,7 +88,7 @@ export function LoginForm() {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Input type={showPassword ? "text" : "password"} placeholder="••••••••" {...field} />
+                      <Input type={showPassword ? "text" : "password"} placeholder="Password" {...field} />
                        <Button
                         type="button"
                         variant="ghost"

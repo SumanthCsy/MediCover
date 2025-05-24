@@ -89,7 +89,7 @@ export function PatientDataForm() {
                   <FormItem>
                     <FormLabel>Patient Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., John Doe" {...field} />
+                      <Input placeholder="Full Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -102,7 +102,7 @@ export function PatientDataForm() {
                   <FormItem>
                     <FormLabel>Age</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 35" {...field} />
+                      <Input type="number" placeholder="Age" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -137,7 +137,7 @@ export function PatientDataForm() {
                   <FormItem>
                     <FormLabel>Contact Number</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., +1234567890" {...field} />
+                      <Input placeholder="Phone Number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -151,7 +151,7 @@ export function PatientDataForm() {
                 <FormItem>
                   <FormLabel>Full Address</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., 123 Main St, Anytown, USA" {...field} />
+                    <Textarea placeholder="Street Address, City, Country" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -164,7 +164,7 @@ export function PatientDataForm() {
                 <FormItem>
                   <FormLabel>Medical History (Optional)</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., Allergic to penicillin, Hypertension" {...field} />
+                    <Textarea placeholder="Past conditions or allergies" {...field} />
                   </FormControl>
                   <FormDescription>Brief summary of past conditions or allergies.</FormDescription>
                   <FormMessage />
@@ -178,7 +178,7 @@ export function PatientDataForm() {
                   <FormItem>
                     <FormLabel>Current Ailment / Reason for Visit</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="e.g., Persistent cough and fever for 3 days" {...field} />
+                      <Textarea placeholder="Describe current symptoms" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -191,7 +191,7 @@ export function PatientDataForm() {
                 <FormItem>
                   <FormLabel>Doctor Assigned</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Dr. Emily Carter" {...field} />
+                    <Input placeholder="Doctor's Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

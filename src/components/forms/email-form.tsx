@@ -133,7 +133,7 @@ export function EmailForm() {
                 <FormItem>
                   <FormLabel>To (Customer Email)</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., customer@example.com" {...field} />
+                    <Input placeholder="Customer Email Address" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,7 +147,7 @@ export function EmailForm() {
                   <FormLabel>Subject</FormLabel>
                   <div className="flex items-center gap-2">
                     <FormControl className="flex-grow">
-                      <Input placeholder="e.g., Your Appointment Reminder" {...field} />
+                      <Input placeholder="Email Subject" {...field} />
                     </FormControl>
                     <Button
                       type="button"
@@ -176,7 +176,7 @@ export function EmailForm() {
                 <FormItem>
                   <FormLabel>Email Body</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Dear Customer..." {...field} rows={8} />
+                    <Textarea placeholder="Compose your email..." {...field} rows={8} />
                   </FormControl>
                   <FormDescription>Compose the main content of your email here.</FormDescription>
                   <FormMessage />
