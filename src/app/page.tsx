@@ -35,7 +35,7 @@ export default function HomePage() {
       <main className="flex-grow">
         <section className="relative h-[calc(100vh-200px)] min-h-[400px] md:min-h-[500px] flex items-center justify-center text-center bg-secondary/20">
           <Image
-            src="https://placehold.co/1600x800.png"
+            src="https://placehold.co/1200x600.png"
             alt="Medicover Hospital Building"
             layout="fill"
             objectFit="cover"
